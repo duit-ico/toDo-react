@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import { ToDo } from '../../../models/todo-item';
 
 export const ToDoListItem = (props: {toDoItem: ToDo, deleteToDo: Function, updateToDo: Function}) => {
-  let flag: number;
   const notify = (flag: number) => {
     switch (flag) {
       case 0:
@@ -28,14 +27,14 @@ export const ToDoListItem = (props: {toDoItem: ToDo, deleteToDo: Function, updat
         <button 
          className="btn-trash"
          onClick={() => {
-          notify(flag = 0)
+          notify(0)
           props.deleteToDo(props.toDoItem)
         }}
         ></button>
         <button 
          className={props.toDoItem.isDone ? 'btn-check' : 'btn-uncheck'}
          onClick={() => {
-          props.toDoItem.isDone ? notify(flag = 1) : notify(flag = 2)
+          props.toDoItem.isDone ? notify(1) : notify(2)
           props.updateToDo(props.toDoItem)
         }}
         ></button>
